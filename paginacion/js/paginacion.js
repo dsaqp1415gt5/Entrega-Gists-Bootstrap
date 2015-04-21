@@ -8,54 +8,31 @@ $.ajaxSetup({
 
 $(document).ready(function(){
 	var url = API_BASE_URL + '/users/' + USERNAME + '/gists?per_page=2';
-<<<<<<< HEAD
 	getRepos(url);
 
     $("#botoncreate").click(function(e) {
     console.log("click");
-=======
-    console.log(url);
-	getRepos(url);
-});
-
-$("#botoncreate").click(function(e) {
->>>>>>> Entrega-Gists-Bootstrap/master
 	e.preventDefault();
     var newGist ;
     if($('#descripcion_create').val() == "" || $('#contenido_create').val()== ""){
 		$('<div class="alert alert-info">Debes rellenar los campos descripcion y contenido</div>').appendTo($("#create_result"));
     }else{
-<<<<<<< HEAD
         var filename = $('#nombre_create').val();
-=======
->>>>>>> Entrega-Gists-Bootstrap/master
 		newGist = {
 			"description" : $('#descripcion_create').val(),
 			"public" : true,
 			"files":{
-<<<<<<< HEAD
 				 "archivo1.txt" :  {
-=======
-				 "archivo1" :  {
->>>>>>> Entrega-Gists-Bootstrap/master
 					"content" : $('#contenido_create').val()
 				}
 			}
 		}
-<<<<<<< HEAD
         console.log(newGist);
 		createGist(newGist);
 	}
 });
 
     $("#botoneditar").click(function(e){
-=======
-		crearGist(newGist);
-	}
-});
-
-$("#botoneditar").click(function(e){
->>>>>>> Entrega-Gists-Bootstrap/master
 	e.preventDefault();
 	if($('#id_edit').val() == ""){
 		$('<div class="alert alert-danger"> <strong>Oh!</strong> Debes proporcionar una ID </div>').appendTo($("#update_result"));
@@ -81,12 +58,7 @@ $("#botonguardar").click(function(e){
 		editGist(gistEditado);
 	}
 });
-<<<<<<< HEAD
     $("#botoneliminar").click(function(e) {
-=======
-
-$("#botoneliminar").click(function(e) {
->>>>>>> Entrega-Gists-Bootstrap/master
 	e.preventDefault();
     if($('#id_delete').val() ==""){
 		$('<div class="alert alert-info">Debes proporcionar una ID</div>').appendTo($("#delete_result"));
@@ -94,15 +66,12 @@ $("#botoneliminar").click(function(e) {
 		deleteGist($("#id_delete").val());
 	}
 });
-<<<<<<< HEAD
 });
 
 
 
 
 
-=======
->>>>>>> Entrega-Gists-Bootstrap/master
 
 function RepoCollection(repoCollection){
 	this.repos = repoCollection;
@@ -171,11 +140,7 @@ function getRepos(url) {
 function createGist(gist) {
 	var url = API_BASE_URL + '/gists';
 	var data = JSON.stringify(gist);
-<<<<<<< HEAD
     console.log(data);
-=======
-
->>>>>>> Entrega-Gists-Bootstrap/master
 	$("#create_result").text('');
 
 	$.ajax({
@@ -183,20 +148,13 @@ function createGist(gist) {
 		type : 'POST',
 		crossDomain : true,
 		dataType : 'json',
-<<<<<<< HEAD
 		data : data,
-=======
-		data : gist,
->>>>>>> Entrega-Gists-Bootstrap/master
 	}).done(function(data, status, jqxhr) {
 		$('<div class="alert alert-success"> <strong>Ok!</strong> Gist creado</div>').appendTo($("#create_result"));
 		$("#descripcion_create").val("");
 		$("#contenido_create").val("");
-<<<<<<< HEAD
         var url = API_BASE_URL + '/users/' + USERNAME + '/gists?per_page=2';
 	getRepos(url);
-=======
->>>>>>> Entrega-Gists-Bootstrap/master
   	}).fail(function() {
 		$('<div class="alert alert-danger"> <strong>Oh!</strong> Error </div>').appendTo($("#create_result"));
 	});
@@ -204,11 +162,7 @@ function createGist(gist) {
 }
 
 function getGistToEdit(gist_id){
-<<<<<<< HEAD
 	var url = API_BASE_URL + '/gists/' + gist_id;
-=======
-	var url = API_URL + '/gists/' + gist_id;
->>>>>>> Entrega-Gists-Bootstrap/master
 	$("#update_result").text('');
 
 	$.ajax({
@@ -235,11 +189,7 @@ function getGistToEdit(gist_id){
 
 function editGist(gistEditado){
 
-<<<<<<< HEAD
 	var url = API_BASE_URL + '/gists/' + $("#id_edit").val() ;
-=======
-	var url = API_URL + '/gists/' + $("#id_edit").val() ;
->>>>>>> Entrega-Gists-Bootstrap/master
 	var gist = JSON.stringify(gistEditado);
 
 	$("#update_result").text('');
@@ -257,11 +207,8 @@ function editGist(gistEditado){
 		$('<div class="alert alert-success"> <strong>Ok!</strong> Gist Editado</div>').appendTo($("#update_result"));
 		$("#descripcion_edit").val("");
 		$("#contenido_edit").val("");
-<<<<<<< HEAD
         var url = API_BASE_URL + '/users/' + USERNAME + '/gists?per_page=2';
 	getRepos(url);
-=======
->>>>>>> Entrega-Gists-Bootstrap/master
 		console.log(data);
   	}).fail(function() {
 		$('<div class="alert alert-danger"> <strong>Oh!</strong> Error </div>').appendTo($("#update_result"));
@@ -271,11 +218,7 @@ function editGist(gistEditado){
 
 function deleteGist(id_gist) {
     $("#delete_result").text('');
-<<<<<<< HEAD
 	var url = API_BASE_URL + '/gists/' + id_gist;
-=======
-	var url = API_URL + '/gists/' + id_gist;
->>>>>>> Entrega-Gists-Bootstrap/master
 	$.ajax({
 		url: url,
 		type : 'DELETE',
@@ -284,11 +227,8 @@ function deleteGist(id_gist) {
 	}).done(function(data, status, jqxhr) {
 		$('<div class="alert alert-success"> <strong>Ok!</strong> Gist Eliminado</div>').appendTo($("#delete_result"));
 		console.log(data);
-<<<<<<< HEAD
         var url = API_BASE_URL + '/users/' + USERNAME + '/gists?per_page=2';
 	    getRepos(url);
-=======
->>>>>>> Entrega-Gists-Bootstrap/master
   	}).fail(function() {
 		$('<div class="alert alert-danger"> <strong>Oh!</strong> Error </div>').appendTo($("#delete_result"));
 	});
